@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -36,14 +38,26 @@ public class AMSHomepage {
 			driver.findElement(By.xpath("//input[@type='submit']")).click();
 			Thread.sleep(2000);
 			driver.findElement(By.xpath("//*[@id='idBtn_Back']")).click();
-			String myexception = driver.findElement(By.xpath("(//div[@class='stats-link']/a)[1]")).getText();
-			Assert.assertEquals(myexception, "My Exceptions (9)","validation");
+			
 		List<WebElement> lists=	driver.findElements(By.className("ContentPlaceHolderBody_UserStatus1_tvMyExceptions_0"));
 		List<WebElement> alllist = driver.findElements(By.xpath("//a[@title='ABSENT#']/parent::td/parent::tr//td[1]/span"));
-		List<WebElement> ualist = driver.findElements(By.xpath("//a[@title='ABSENT#']"));
+		List<WebElement> ualist = driver.findElements(By.xpath("//table/tbody/tr/td[4]/a[contains(text(),'UA')]"));
+		String myexception = driver.findElement(By.xpath("(//div[@class='stats-link']/a)[1]")).getText();
+		Assert.assertEquals(myexception, "My Exceptions ("+ualist.size()+")","validation");
+	WebElement image=	driver.findElement(By.id("ContentPlaceHolderBody_UserStatus1_imgMyException"));
+		if(lists.size()!=0)
+		{	
+			String  imagetext = image.getAttribute("class").split(" ")[0];
+			//System.out.println(imagetext);
+			Assert.assertEquals(imagetext, "sad");
+			System.out.println("Sad Image Matched");
+		}
 		validateDatenText(lists, alllist, ualist);
+//			{
+//				System.out.println(image.getAttribute("class"));
+//			})
 	}
-	
+	 
 	
 	public void validateDatenText(List<WebElement> lists,List<WebElement> alllist,List<WebElement> ualist)
 	{
@@ -51,6 +65,7 @@ public class AMSHomepage {
 		List<String> UAlist2 = new ArrayList<>();
 		List<Integer>data1 = new ArrayList<>() ;
 		List<Integer>data2 = new ArrayList<>() ;
+	
 		for(int i=0;i<=lists.size()-2;i++)
 		{
 			String Ualist = lists.get(i).getText().split("2022 ")[1].trim();
@@ -59,19 +74,40 @@ public class AMSHomepage {
 			List<Integer>d1 =  dateFormatConversion(text);
 			data1.addAll(d1);
 		}
-		for(int j=alllist.size()-1;j>5;j--)
+		int k=1;
+		for(int j=alllist.size()-1;j>0;j--)
 		{
 			String text1 = alllist.get(j).getText().split(", ")[1];
-			List<Integer>d2 = dateFormatConversion1(text1);
-			data2.addAll(d2);
+			//System.out.println("data 2 text : "+text1);
+		
+			if(k<4)
+			{
+				List<Integer>d2 = dateFormatConversion1(text1);
+				data2.addAll(d2);
+				k++;
+			}
+			else
+				break;
 		}
 		
-		
-		for(int j=ualist.size()-1;j>5;j-- )
+		int l=1;
+		for(int j=ualist.size()-1;j>0;j--)
 		{
-			UAlist2.add(ualist.get(j).getText());
+			if(l<4)
+			{
+				UAlist2.add(ualist.get(j).getText());
+				l++;
+			}
+			else
+				break;
+			
 		}
+
+		System.out.println("data 1 :"+data1);
+		System.out.println("data 2 :"+data2);
 		Assert.assertEquals(data1, data2);
+		System.out.println("ua list 1 : "+UAlist1);
+		System.out.println("ua list 2 : "+UAlist2);
 		Assert.assertEquals(UAlist1, UAlist2);
 		System.out.println("both text and date matched");
 		
@@ -112,7 +148,8 @@ public class AMSHomepage {
 	
 	public List<Integer> dateFormatConversion1(String  schedule)
 	{
-		List<Integer> alldata = new ArrayList<>();
+		
+	List<Integer> alldata = new ArrayList<>();
 	int date = Integer.parseInt(schedule.split(" ")[0]);
 	int year = Integer.parseInt(schedule.split(" ")[2]);
 	String Month = schedule.split(" ")[1];
@@ -136,7 +173,6 @@ public class AMSHomepage {
 	alldata.add(month);
 	alldata.add(year);
 	
-	//System.out.println("int : "+date +" "+month+" "+year );
 	return alldata;
 	}
 
