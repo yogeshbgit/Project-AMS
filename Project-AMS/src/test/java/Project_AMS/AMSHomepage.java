@@ -47,9 +47,7 @@ public class AMSHomepage {
 				System.out.println("Sad Image Matched");
 			}
 		validateDatenText(lists, alllist, ualist);
-//			{
-//				System.out.println(image.getAttribute("class"));
-//			})
+
 	}
 	 
 	
@@ -108,6 +106,7 @@ public class AMSHomepage {
 	@Test
 	public  void validatePendingLeave()
 	{
+
 		String pendtext =me.getpendingtext();		
 		String apptext = me.getapproachtext();
 		Assert.assertEquals(pendtext, "Pending Leave/Holiday request by LM");
@@ -118,20 +117,19 @@ public class AMSHomepage {
 	}
 	
 	@Test
-	public void validateMyPendingAction()
+	public void  validateMyPendingAction()
 	{
-	
 		String imgtext = me.getpendingactionimage();
 		Assert.assertEquals(imgtext, "happy");
 		String pendingacttext = me.getpendingacttext();
 		Assert.assertEquals(pendingacttext, "My Pending Action");
-	
+
 	}
 	
-	@AfterTest(enabled=false)
+	@AfterTest(enabled=true)
 	public void teardown()
 	{
 		driver.close();
 	}
-	
+
 }
