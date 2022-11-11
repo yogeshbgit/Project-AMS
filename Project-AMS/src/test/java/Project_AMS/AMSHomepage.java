@@ -16,6 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import PageObject.MyException;
@@ -25,22 +26,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class AMSHomepage {
 	
 	public WebDriver driver;
+	MyException me;
 	@Test
-	public void validateHomePage() throws InterruptedException
+	public void validateMyException() throws InterruptedException
 	{
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
-			driver.get("https://ams-in.capita.co.in/Mypage/Home.aspx");
-			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-			driver.findElement(By.name("loginfmt")).sendKeys("P50096390@capitaindia.onmicrosoft.com");
-			driver.findElement(By.xpath("//input[@id='idSIButton9']")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.xpath("//input[@name='passwd']")).sendKeys("Admin$2145");
-			Thread.sleep(2000);
-			driver.findElement(By.xpath("//input[@type='submit']")).click();
-			Thread.sleep(2000);
-			driver.findElement(By.xpath("//*[@id='idBtn_Back']")).click();
-		MyException me = new MyException(driver);
+		LoginPage lp = new LoginPage();
+		driver = lp.ValidateLogin();
+		me = new MyException(driver);
 		List<WebElement> lists=	me.getexplist();
 		List<WebElement> alllist = me.getalllist();
 		List<WebElement> ualist = me.getualist();
@@ -113,6 +105,33 @@ public class AMSHomepage {
 		
 	}
 	
+	@Test
+	public  void validatePendingLeave()
+	{
+		String pendtext =me.getpendingtext();		
+		String apptext = me.getapproachtext();
+		Assert.assertEquals(pendtext, "Pending Leave/Holiday request by LM");
+		Assert.assertEquals(apptext, "Approaching Leave / Holiday:");
+		String imgtext = me.getpendingimage();
+		Assert.assertEquals(imgtext, "sad");
+		
+	}
 	
+	@Test
+	public void validateMyPendingAction()
+	{
+	
+		String imgtext = me.getpendingactionimage();
+		Assert.assertEquals(imgtext, "happy");
+		String pendingacttext = me.getpendingacttext();
+		Assert.assertEquals(pendingacttext, "My Pending Action");
+	
+	}
+	
+	@AfterTest(enabled=false)
+	public void teardown()
+	{
+		driver.close();
+	}
 	
 }
