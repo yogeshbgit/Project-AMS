@@ -5,7 +5,8 @@
     <classes>
       <class name="Project_AMS.AMSHomepage">
         <methods>
-          <include name="validateHomePage"/>
+          <include name="validateMyPendingAction"/>
+          <include name="teardown"/>
         </methods>
       </class> <!-- Project_AMS.AMSHomepage -->
     </classes>
