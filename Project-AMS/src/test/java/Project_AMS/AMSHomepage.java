@@ -1,27 +1,15 @@
 package Project_AMS;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import PageObject.MyException;
 import Utils.DateConversion;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AMSHomepage {
 	
@@ -103,7 +91,7 @@ public class AMSHomepage {
 		
 	}
 	
-	@Test
+@Test
 	public  void validatePendingLeave()
 	{
 
@@ -131,5 +119,7 @@ public class AMSHomepage {
 	{
 		driver.close();
 	}
+	
+
 
 }
