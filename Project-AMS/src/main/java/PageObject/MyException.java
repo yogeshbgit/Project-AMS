@@ -29,7 +29,7 @@ public class MyException {
 	By imagetxt = By.id("ContentPlaceHolderBody_UserStatus1_imgLeaveHoliday");
 	
 	//My Pending Action
-	By pendingacttext = By.xpath("(//div[@class='stats-link']/a)[3]");
+	By pendingacttext = By.className("newcusthead");
 	By actionimagetxt = By.id("ContentPlaceHolderBody_UserStatus1_imgPendingAction");
 	
 	
@@ -86,7 +86,6 @@ public class MyException {
 	//MyPending Action method
 	public String getpendingacttext()
 	{
-		System.out.println("text : "+driver.findElement(pendingacttext).getText());
 		return driver.findElement(pendingacttext).getText();
 	}
 	
