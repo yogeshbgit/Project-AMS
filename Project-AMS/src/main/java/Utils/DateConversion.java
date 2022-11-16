@@ -33,7 +33,6 @@ public class DateConversion {
 	alldata.add(date);
 	alldata.add(month);
 	alldata.add(year);
-	
 	return alldata;
 	//System.out.println(" 01 int : "+date +" "+month+" "+year );
 	
@@ -42,7 +41,7 @@ public class DateConversion {
 	public List<Integer> dateFormatConversion1(String  schedule)
 	{
 		
-	List<Integer> alldata = new ArrayList<>();
+		List<Integer> alldata = new ArrayList<>();
 	int date = Integer.parseInt(schedule.split(" ")[0]);
 	int year = Integer.parseInt(schedule.split(" ")[2]);
 	String Month = schedule.split(" ")[1];
@@ -65,7 +64,6 @@ public class DateConversion {
 	alldata.add(date);
 	alldata.add(month);
 	alldata.add(year);
-	
 	return alldata;
 	}
 

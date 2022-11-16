@@ -28,6 +28,8 @@ public class LoginPage {
 			driver.findElement(By.xpath("//input[@type='submit']")).click();
 			Thread.sleep(2000);
 			driver.findElement(By.xpath("//*[@id='idBtn_Back']")).click();
-			return driver;
+
+return driver;
+			
 	}
 }

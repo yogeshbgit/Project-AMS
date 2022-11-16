@@ -2,6 +2,8 @@ package Project_AMS;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -22,8 +24,11 @@ public class AMSHomepage {
 		driver = lp.ValidateLogin();
 		me = new MyException(driver);
 		List<WebElement> lists=	me.getexplist();
+		System.out.println("list size : "+lists.size());
 		List<WebElement> alllist = me.getalllist();
+		System.out.println("alllist size : "+alllist.size());
 		List<WebElement> ualist = me.getualist();
+		System.out.println("ualist size : "+ualist.size());
 		String myexception = me.getmyexptext();
 		Assert.assertEquals(myexception, "My Exceptions ("+ualist.size()+")","validation");
 		WebElement image=	me.getsadimage();
@@ -33,6 +38,13 @@ public class AMSHomepage {
 				//System.out.println(imagetext);
 				Assert.assertEquals(imagetext, "sad");
 				System.out.println("Sad Image Matched");
+			}
+			else
+			{
+				String  imagetext = image.getAttribute("class").split(" ")[0];
+				//System.out.println(imagetext);
+				Assert.assertEquals(imagetext, "happy");
+				System.out.println("happy Image Matched");
 			}
 		validateDatenText(lists, alllist, ualist);
 
@@ -46,19 +58,22 @@ public class AMSHomepage {
 		List<Integer>data1 = new ArrayList<>() ;
 		List<Integer>data2 = new ArrayList<>() ;
 		DateConversion datecon = new DateConversion();
-		for(int i=0;i<=lists.size()-2;i++)
+		int n=1;
+		for(int i=0;i<=lists.size()-1;i++)
 		{
 			String Ualist = lists.get(i).getText().split("2022 ")[1].trim();
 			UAlist1.add(Ualist);
 			String text = lists.get(i).getText().split(" ")[0];
-			List<Integer>d1 = datecon.dateFormatConversion(text);
-			data1.addAll(d1);
+			if(n<4)
+			{
+				List<Integer>d1 = datecon.dateFormatConversion(text);
+				data1.addAll(d1);
+			}
 		}
 		int k=1;
-		for(int j=alllist.size()-1;j>0;j--) 
+		for(int j=alllist.size()-1;j>=0;j--) 
 		{
 			String text1 = alllist.get(j).getText().split(", ")[1];
-			//System.out.println("data 2 text : "+text1);
 			if(k<4)
 			{
 				List<Integer>d2 = datecon.dateFormatConversion1(text1);
@@ -66,12 +81,16 @@ public class AMSHomepage {
 				k++;
 			}
 			else
+			{
+				System.out.println("in else condition");
 				break;
+			}	
 		}
 		
 		int l=1;
-		for(int j=ualist.size()-1;j>0;j--)
+		for(int j=ualist.size()-1;j>=0;j--)
 		{
+			System.out.println("ua list : "+ualist.size());
 			if(l<4)
 			{
 				UAlist2.add(ualist.get(j).getText());
@@ -109,12 +128,14 @@ public class AMSHomepage {
 	{
 		String imgtext = me.getpendingactionimage();
 		Assert.assertEquals(imgtext, "happy");
+		String text = driver.findElement(By.cssSelector(".newcusthead")).getText();
+		System.out.println("pending action text :  "+text);
 		String pendingacttext = me.getpendingacttext();
-		Assert.assertEquals(pendingacttext, "My Pending Action");
+		//Assert.assertEquals(pendingacttext, "My Pending Action");
 
 	}
 	
-	@AfterTest(enabled=true)
+	@AfterTest(enabled=false)
 	public void teardown()
 	{
 		driver.close();

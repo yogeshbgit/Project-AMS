@@ -4,7 +4,7 @@
   <test thread-count="5" name="Test">
     <classes>
     <!--  <class name="Project_AMS.AppTest"/> -->
-      <class name="Project_AMS.LoginPage"/>
+      <class name="Project_AMS.AMSHomepage"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

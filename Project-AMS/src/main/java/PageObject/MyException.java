@@ -19,7 +19,9 @@ public class MyException {
 	//My Exception
 	By explist = By.className("ContentPlaceHolderBody_UserStatus1_tvMyExceptions_0");
 	By ualist = By.xpath("//table/tbody/tr/td[4]/a[contains(text(),'UA')]");
-	By alllist = By.xpath("//a[@title='ABSENT#']/parent::td/parent::tr//td[1]/span");
+	By all = By.xpath("//a[normalize-space()='UA']/parent::td/parent::tr/td[1]/span");
+	//By alllist = By.xpath("//a[@title='ABSENT#']/parent::td/parent::tr//td[1]/span");
+	
 	By myexptext = By.xpath("(//div[@class='stats-link']/a)[1]");
 	By sadimage = By.id("ContentPlaceHolderBody_UserStatus1_imgMyException");
 	
@@ -51,7 +53,8 @@ public class MyException {
 	}
 	public List<WebElement> getalllist()
 	{
-		return driver.findElements(alllist);
+
+		return driver.findElements(all);
 		 
 	}
 	public String getmyexptext()
