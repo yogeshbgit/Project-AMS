@@ -24,14 +24,21 @@ public class AMSHomepage {
 		driver = lp.ValidateLogin();
 		me = new MyException(driver);
 		List<WebElement> lists=	me.getexplist();
-		System.out.println("list size : "+lists.size());
+		//System.out.println("list size : "+lists.size());
 		List<WebElement> alllist = me.getalllist();
-		System.out.println("alllist size : "+alllist.size());
+		//System.out.println("alllist size : "+alllist.size());
 		List<WebElement> ualist = me.getualist();
-		System.out.println("ualist size : "+ualist.size());
+		//System.out.println("ualist size : "+ualist.size());
 		String myexception = me.getmyexptext();
-		Assert.assertEquals(myexception, "My Exceptions ("+ualist.size()+")","validation");
-		WebElement image=	me.getsadimage();
+		if(ualist.size()!=0)
+		{
+			Assert.assertEquals(myexception, "My Exceptions ("+ualist.size()+")","My Exception validation");
+		}
+		else
+		{
+			Assert.assertEquals(myexception, "My Exceptions","My Exception validation");
+		}
+		WebElement image=	me.getsadimage(); 
 			if(lists.size()!=0)
 			{	
 				String  imagetext = image.getAttribute("class").split(" ")[0];
@@ -68,6 +75,7 @@ public class AMSHomepage {
 			{
 				List<Integer>d1 = datecon.dateFormatConversion(text);
 				data1.addAll(d1);
+				n++; 
 			}
 		}
 		int k=1;
@@ -86,11 +94,9 @@ public class AMSHomepage {
 				break;
 			}	
 		}
-		
 		int l=1;
 		for(int j=ualist.size()-1;j>=0;j--)
 		{
-			System.out.println("ua list : "+ualist.size());
 			if(l<4)
 			{
 				UAlist2.add(ualist.get(j).getText());

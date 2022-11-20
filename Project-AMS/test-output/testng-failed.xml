@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Project_AMS.AMSHomepage">
+      <class name="Project_AMS.myHolidayList">
         <methods>
-          <include name="validateLeavePlan"/>
-          <include name="validateMyLeave"/>
-          <include name="validateMyException"/>
+          <include name="validateMyHolidayList"/>
+          <include name="teardown"/>
         </methods>
-      </class> <!-- Project_AMS.AMSHomepage -->
+      </class> <!-- Project_AMS.myHolidayList -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

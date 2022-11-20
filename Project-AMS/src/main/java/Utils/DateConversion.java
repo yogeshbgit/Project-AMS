@@ -1,18 +1,24 @@
 package Utils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import org.testng.Assert;
 
 public class DateConversion {
 
-	
+public int date;	
+public int month;	
+public int year;	
 	public List<Integer> dateFormatConversion(String  schedule)
 	{
 
 		List<Integer> alldata = new ArrayList<>();
-	int date = Integer.parseInt(schedule.split("-")[0]);
-	int year = Integer.parseInt(schedule.split("-")[2]);
+	 date = Integer.parseInt(schedule.split("-")[0]);
+	 year = Integer.parseInt(schedule.split("-")[2]);
 	String Month = schedule.split("-")[1];
 
 	HashMap<String,Integer> hm = new HashMap<String,Integer>();
@@ -29,12 +35,13 @@ public class DateConversion {
 	hm.put("Nov", 11);
 	hm.put("Dec", 12);
 
-	int month = hm.get(Month);
+	 month = hm.get(Month);
 	alldata.add(date);
 	alldata.add(month);
 	alldata.add(year);
+
+		
 	return alldata;
-	//System.out.println(" 01 int : "+date +" "+month+" "+year );
 	
 	}
 	
