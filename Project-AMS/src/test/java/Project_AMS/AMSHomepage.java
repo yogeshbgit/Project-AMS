@@ -130,14 +130,14 @@ public class AMSHomepage {
 	}
 	
 	@Test
-	public void  validateMyPendingAction()
+	public void  validateMyPendingAction() throws InterruptedException
 	{
 		String imgtext = me.getpendingactionimage();
 		Assert.assertEquals(imgtext, "happy");
-		String text = driver.findElement(By.cssSelector(".newcusthead")).getText();
-		System.out.println("pending action text :  "+text);
+		//String text = driver.findElement(By.cssSelector(".newcusthead")).getText();
+		//System.out.println("pending action text :  "+text);
 		String pendingacttext = me.getpendingacttext();
-		//Assert.assertEquals(pendingacttext, "My Pending Action");
+		Assert.assertEquals(pendingacttext, "My Pending Action");
 
 	}
 	

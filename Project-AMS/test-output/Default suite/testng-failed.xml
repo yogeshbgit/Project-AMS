@@ -5,8 +5,9 @@
     <classes>
       <class name="Project_AMS.myHolidayList">
         <methods>
-          <include name="validateMyHolidayList"/>
+          <include name="initilize"/>
           <include name="teardown"/>
+          <include name="validateCancelledHolidayList"/>
         </methods>
       </class> <!-- Project_AMS.myHolidayList -->
     </classes>

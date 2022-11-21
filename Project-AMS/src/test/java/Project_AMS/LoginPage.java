@@ -16,7 +16,7 @@ public class LoginPage {
 	@Test
 	public WebDriver ValidateLogin() throws InterruptedException
 	{
-		WebDriverManager.chromedriver().setup();
+	  WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 			driver.get("https://ams-in.capita.co.in/Mypage/Home.aspx");
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -31,7 +31,8 @@ public class LoginPage {
 
 			driver.findElement(By.xpath("//*[@id='idBtn_Back']")).click();
 
-return driver;
+return driver; 
+
 			
 	}
 }
