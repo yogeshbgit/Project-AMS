@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-11-26T19:26:34 IST" name="Default suite" finished-at="2022-11-26T19:27:55 IST" duration-ms="81123">
+  <suite started-at="2022-12-10T13:45:43 IST" name="Default suite" finished-at="2022-12-10T13:46:36 IST" duration-ms="53556">
     <groups>
     </groups>
-    <test started-at="2022-11-26T19:26:34 IST" name="Default test" finished-at="2022-11-26T19:27:55 IST" duration-ms="81123">
-      <class name="Project_AMS.MyExceptionHistory">
-        <test-method is-config="true" signature="initilize()[pri:0, instance:Project_AMS.MyExceptionHistory@4310d43]" started-at="2022-11-26T19:26:34 IST" name="initilize" finished-at="2022-11-26T19:27:19 IST" duration-ms="44914" status="PASS">
+    <test started-at="2022-12-10T13:45:43 IST" name="Default test" finished-at="2022-12-10T13:46:36 IST" duration-ms="53556">
+      <class name="Project_AMS.myHolidayList">
+        <test-method is-config="true" signature="initilize()[pri:0, instance:Project_AMS.myHolidayList@4efac082]" started-at="2022-12-10T13:45:43 IST" name="initilize" finished-at="2022-12-10T13:46:09 IST" duration-ms="25994" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initilize -->
-        <test-method signature="validateException()[pri:0, instance:Project_AMS.MyExceptionHistory@4310d43]" started-at="2022-11-26T19:27:19 IST" name="validateException" finished-at="2022-11-26T19:27:34 IST" duration-ms="14211" status="PASS">
+        <test-method signature="validateHolidaysWithCurrentDate()[pri:1, instance:Project_AMS.myHolidayList@4efac082]" started-at="2022-12-10T13:46:09 IST" name="validateHolidaysWithCurrentDate" finished-at="2022-12-10T13:46:16 IST" duration-ms="6947" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateException -->
-        <test-method signature="validateExceptionHistoryStatus()[pri:1, instance:Project_AMS.MyExceptionHistory@4310d43]" started-at="2022-11-26T19:27:34 IST" name="validateExceptionHistoryStatus" finished-at="2022-11-26T19:27:55 IST" duration-ms="21908" status="PASS">
+        </test-method> <!-- validateHolidaysWithCurrentDate -->
+        <test-method signature="validatehighlightholiday()[pri:2, instance:Project_AMS.myHolidayList@4efac082]" started-at="2022-12-10T13:46:16 IST" name="validatehighlightholiday" finished-at="2022-12-10T13:46:16 IST" duration-ms="87" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateExceptionHistoryStatus -->
-      </class> <!-- Project_AMS.MyExceptionHistory -->
+        </test-method> <!-- validatehighlightholiday -->
+        <test-method signature="validateSelectedHolidays()[pri:3, instance:Project_AMS.myHolidayList@4efac082]" started-at="2022-12-10T13:46:16 IST" name="validateSelectedHolidays" finished-at="2022-12-10T13:46:19 IST" duration-ms="3085" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSelectedHolidays -->
+        <test-method signature="validateSelectedHolidayCount()[pri:4, instance:Project_AMS.myHolidayList@4efac082]" started-at="2022-12-10T13:46:19 IST" name="validateSelectedHolidayCount" finished-at="2022-12-10T13:46:19 IST" duration-ms="48" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSelectedHolidayCount -->
+        <test-method signature="validateSubmittedHolidayList()[pri:5, instance:Project_AMS.myHolidayList@4efac082]" started-at="2022-12-10T13:46:19 IST" name="validateSubmittedHolidayList" finished-at="2022-12-10T13:46:19 IST" duration-ms="142" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateSubmittedHolidayList -->
+        <test-method signature="validateCancelledHolidayList()[pri:6, instance:Project_AMS.myHolidayList@4efac082]" started-at="2022-12-10T13:46:19 IST" name="validateCancelledHolidayList" finished-at="2022-12-10T13:46:32 IST" duration-ms="12981" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateCancelledHolidayList -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:Project_AMS.myHolidayList@4efac082]" started-at="2022-12-10T13:46:32 IST" name="teardown" finished-at="2022-12-10T13:46:36 IST" duration-ms="4144" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- Project_AMS.myHolidayList -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
